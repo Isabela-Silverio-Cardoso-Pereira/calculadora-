@@ -17,55 +17,113 @@
             align-items: center;
             height: 100vh;
             background-color: #f9f9f9;
+            background-color: #ffccd3;
+
         }
 
-
+        .calculadora {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .display {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 24px;
+            padding: 10px;
+            border: none;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
 
        button{
            width: 100px;
            padding: 20px;
            border-radius: 30px;
            border-color: aliceblue;
+           font-family: "fangsong";
+           color: #716868;
+           gap: 10px;
+           font-size: 18px;
+           cursor: pointer;
+           background-color: white;
+
+
+
+
+
        }
        button:hover{
            border-color: #cca7c6;
            border-color: aliceblue;
+           background-color: lightpink;
+           color: aliceblue;
+
 
        }
+    .botoes{
 
+    }
 
     </style>
 </head>
 <body>
-<div class="botoes">
-    <button>C</button>
-    <button>&larr;</button>
+<div class="calculadora">
+    <input type="text" class="display" id="display" disabled>
+    <div class="botoes">
+        <button onclick="limpar()">C</button>
+        <button onclick="backspace()">&larr;</button>
+        <button onclick="add('/')">/</button><br>
 
+        <button onclick="add('*')">X</button>
+        <button onclick="add('-')">-</button>
+        <button onclick="add('+')">+</button><br>
 
-    <button>/</button><br>
-    <button>X</button>
-    <button>-</button>
-    <button>+</button><br>
+        <button onclick="add('7')">7</button>
+        <button onclick="add('8')">8</button>
+        <button onclick="add('9')">9</button><br>
 
+        <button onclick="add('4')">4</button>
+        <button onclick="add('5')">5</button>
+        <button onclick="add('6')">6</button><br>
 
-    <button>7</button>
-    <button>8</button>
-    <button>9</button><br>
+        <button onclick="add('1')">1</button>
+        <button onclick="add('2')">2</button>
+        <button onclick="add('3')">3</button><br>
 
-    <button>4</button>
-    <button>5</button>
-    <button>6</button><br>
-
-    <button>1</button>
-    <button>2</button>
-    <button>3</button><br>
-
-
-    <button>0</button>
-    <button>,</button>
-    <button style="background-color: lightpink">=</button>
-
-
+        <button class="btn-zero" onclick="add('0')">0</button>
+        <button onclick="add('.')">,</button>
+        <button class="btn-equal" onclick="calcular()">=</button>
+    </div>
 </div>
+
+
+<script>
+    let display = document.getElementById("display");
+
+    function add(valor) {
+        display.value += valor;
+    }
+
+    function limpar() {
+        display.value = "";
+    }
+
+    function backspace() {
+        display.value = display.value.slice(0, -1);
+    }
+
+    function calcular() {
+        try {
+            display.value = eval(display.value.replace('X', '*').replace(',', '.'));
+        } catch {
+            display.value = "Erro";
+        }
+    }
+</script>
 </body>
 </html>
